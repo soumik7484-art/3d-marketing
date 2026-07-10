@@ -11,24 +11,28 @@ interface ImageData {
 
 const IMAGES: ImageData[] = [
   {
-    src: "https://fifth-gentle-45902158.figma.site/_components/v2/4de492f6d9cf8244ad5293233e5c6f52407d42fc/1.02464a56.png",
-    bg: "#F4845F",
-    panel: "#F79B7F",
+    // 🔥 Fire character — warm amber-orange
+    src: "/fig1.png",
+    bg: "#E8622A",
+    panel: "#F2834D",
   },
   {
-    src: "https://fifth-gentle-45902158.figma.site/_components/v2/4de492f6d9cf8244ad5293233e5c6f52407d42fc/2.b977faab.png",
-    bg: "#6BBF7A",
-    panel: "#85CC92",
+    // 🌿 Nature character — deep sage green
+    src: "/fig2.png",
+    bg: "#3D9E55",
+    panel: "#5AB96E",
   },
   {
-    src: "https://fifth-gentle-45902158.figma.site/_components/v2/4de492f6d9cf8244ad5293233e5c6f52407d42fc/3.4df853b4.png",
-    bg: "#E882B4",
-    panel: "#ED9DC4",
+    // 🌸 Kawaii character — vivid bubblegum pink
+    src: "/fig3.png",
+    bg: "#D44F99",
+    panel: "#E070B2",
   },
   {
-    src: "https://fifth-gentle-45902158.figma.site/_components/v2/4de492f6d9cf8244ad5293233e5c6f52407d42fc/4.4457fbce.png",
-    bg: "#6EB5FF",
-    panel: "#8DC4FF",
+    // ⚡ Cyber character — deep electric blue
+    src: "/fig4.png",
+    bg: "#2A6ECC",
+    panel: "#4A8EE8",
   },
 ];
 
@@ -101,49 +105,50 @@ export default function ToonHubHero() {
     switch (role) {
       case "center":
         return {
-          transform: `translateX(-50%) scale(${isMobile ? 1.25 : 1.68})`,
+          // No scale — let height drive the size so legs aren't clipped
+          transform: "translateX(-50%)",
           filter: "blur(0px)",
           opacity: 1,
           zIndex: 20,
           left: "50%",
-          height: isMobile ? "60%" : "92%",
-          bottom: isMobile ? "22%" : "0",
+          height: isMobile ? "78%" : "88%",
+          bottom: isMobile ? "2%" : "2%",
           transition,
           willChange: "transform, filter, opacity",
         };
       case "left":
         return {
-          transform: "translateX(-50%) scale(1)",
+          transform: "translateX(-50%)",
           filter: "blur(2px)",
-          opacity: 0.85,
+          opacity: 0.75,
           zIndex: 10,
-          left: isMobile ? "20%" : "30%",
-          height: isMobile ? "16%" : "28%",
-          bottom: isMobile ? "32%" : "12%",
+          left: isMobile ? "12%" : "22%",
+          height: isMobile ? "44%" : "52%",
+          bottom: isMobile ? "2%" : "2%",
           transition,
           willChange: "transform, filter, opacity",
         };
       case "right":
         return {
-          transform: "translateX(-50%) scale(1)",
+          transform: "translateX(-50%)",
           filter: "blur(2px)",
-          opacity: 0.85,
+          opacity: 0.75,
           zIndex: 10,
-          left: isMobile ? "80%" : "70%",
-          height: isMobile ? "16%" : "28%",
-          bottom: isMobile ? "32%" : "12%",
+          left: isMobile ? "88%" : "78%",
+          height: isMobile ? "44%" : "52%",
+          bottom: isMobile ? "2%" : "2%",
           transition,
           willChange: "transform, filter, opacity",
         };
       case "back":
         return {
-          transform: "translateX(-50%) scale(1)",
-          filter: "blur(4px)",
-          opacity: 1,
+          transform: "translateX(-50%)",
+          filter: "blur(5px)",
+          opacity: 0.55,
           zIndex: 5,
           left: "50%",
-          height: isMobile ? "13%" : "22%",
-          bottom: isMobile ? "32%" : "12%",
+          height: isMobile ? "30%" : "36%",
+          bottom: isMobile ? "2%" : "2%",
           transition,
           willChange: "transform, filter, opacity",
         };
@@ -235,7 +240,7 @@ export default function ToonHubHero() {
       </div>
 
       {/* ── 4. Carousel ── */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 3 }}>
+      <div style={{ position: "absolute", inset: 0, zIndex: 3, isolation: "isolate" }}>
         {IMAGES.map((img, index) => {
           const role = getRoleForIndex(index);
           const roleStyle = getRoleStyle(role);
@@ -244,7 +249,6 @@ export default function ToonHubHero() {
               key={index}
               style={{
                 position: "absolute",
-                aspectRatio: "0.6 / 1",
                 ...roleStyle,
               }}
             >
