@@ -24,6 +24,8 @@ const DOLLS: Product[] = [
   { id: "nature-std",  name: "Flora",   tagline: "Nature Edition",  edition: "standard", price: 10, img: "/fig2.png",        accent: "#3D9E55", icon: <Leaf size={14} /> },
   { id: "kawaii-std",  name: "Starla",  tagline: "Kawaii Edition",  edition: "standard", price: 10, img: "/fig3.png",        accent: "#D44F99", icon: <Sparkles size={14} /> },
   { id: "cyber-std",   name: "Nexus",   tagline: "Cyber Edition",   edition: "standard", price: 10, img: "/fig4.png",        accent: "#2A6ECC", icon: <Cpu size={14} /> },
+  { id: "goth-std",    name: "Luna",    tagline: "Luna Edition",    edition: "standard", price: 10, img: "/fig5.png",        accent: "#904BE8", icon: <Sparkles size={14} /> },
+  { id: "electric-std",name: "Volt",    tagline: "Volt Edition",    edition: "standard", price: 10, img: "/fig6.png",        accent: "#A5D610", icon: <Zap size={14} /> },
   // ── Gold ──
   { id: "fire-gold",   name: "Blaze",   tagline: "Gold Edition",    edition: "gold",     price: 50, img: "/fig1_gold.png",   accent: "#F5A623", icon: <Zap size={14} /> },
   { id: "nature-gold", name: "Flora",   tagline: "Gold Edition",    edition: "gold",     price: 50, img: "/fig2_gold.png",   accent: "#F5A623", icon: <Leaf size={14} /> },
