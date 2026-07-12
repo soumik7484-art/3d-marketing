@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ShoppingCart, Star, Zap, Leaf, Sparkles, Cpu, Check, ShieldAlert } from "lucide-react";
+import { getAssetUrl } from "./utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -153,7 +154,7 @@ function ProductCard({
           filter: "blur(8px)",
         }} />
         <img
-          src={product.img}
+          src={getAssetUrl(product.img)}
           alt={`${product.name} ${product.edition}`}
           draggable={false}
           style={{
@@ -390,7 +391,7 @@ export default function ShopSection({
 
             {/* Cyan Doll Image with active pulse glow */}
             <img
-              src="/fig_legendary.png"
+              src={getAssetUrl("/fig_legendary.png")}
               alt="AURA Cyan Diamond Figurine"
               style={{
                 height: "330px",

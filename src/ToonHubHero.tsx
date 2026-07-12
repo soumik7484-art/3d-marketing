@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { getAssetUrl } from "./utils";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -67,7 +68,7 @@ export default function ToonHubHero({ onBuyNow }: ToonHubHeroProps = {}) {
   useEffect(() => {
     IMAGES.forEach(({ src }) => {
       const img = new Image();
-      img.src = src;
+      img.src = getAssetUrl(src);
     });
   }, []);
 
@@ -258,7 +259,7 @@ export default function ToonHubHero({ onBuyNow }: ToonHubHeroProps = {}) {
               }}
             >
               <img
-                src={img.src}
+                src={getAssetUrl(img.src)}
                 alt={`TOONHUB figurine ${index + 1}`}
                 draggable={false}
                 style={{

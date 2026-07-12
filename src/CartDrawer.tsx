@@ -1,4 +1,5 @@
 import { ShoppingBag, X, Plus, Minus, Trash2, ShieldCheck } from "lucide-react";
+import { getAssetUrl } from "./utils";
 
 export interface CartItem {
   id: string;
@@ -190,7 +191,7 @@ export default function CartDrawer({
                     background: `radial-gradient(ellipse, ${item.accent}66 0%, transparent 70%)`,
                   }} />
                   <img
-                    src={item.img}
+                    src={getAssetUrl(item.img)}
                     alt={item.name}
                     style={{
                       height: "70px",
