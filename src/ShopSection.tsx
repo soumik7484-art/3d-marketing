@@ -35,11 +35,11 @@ const DOLLS: Product[] = [
   { id: "nature-gold", name: "Flora",   tagline: "Gold Edition",    edition: "gold",     price: 49, img: "/fig2_gold.png",   accent: "#F5A623", icon: <Leaf size={14} /> },
   { id: "kawaii-gold", name: "Starla",  tagline: "Gold Edition",    edition: "gold",     price: 49, img: "/fig3_gold.png",   accent: "#F5A623", icon: <Sparkles size={14} /> },
   { id: "cyber-gold",  name: "Nexus",   tagline: "Gold Edition",    edition: "gold",     price: 49, img: "/fig4_gold.png",   accent: "#F5A623", icon: <Cpu size={14} /> },
-  // ── Silver (Now $49) ──
-  { id: "fire-silver",   name: "Blaze",  tagline: "Silver Edition",  edition: "silver", price: 49, img: "/fig1_silver.png",  accent: "#9BB3C8", icon: <Zap size={14} /> },
-  { id: "nature-silver", name: "Flora",  tagline: "Silver Edition",  edition: "silver", price: 49, img: "/fig2_silver.png",  accent: "#9BB3C8", icon: <Leaf size={14} /> },
-  { id: "kawaii-silver", name: "Starla", tagline: "Silver Edition",  edition: "silver", price: 49, img: "/fig3_silver.png",  accent: "#9BB3C8", icon: <Sparkles size={14} /> },
-  { id: "cyber-silver",  name: "Nexus",  tagline: "Silver Edition",  edition: "silver", price: 49, img: "/fig4_silver.png",  accent: "#9BB3C8", icon: <Cpu size={14} /> },
+  // ── Silver (Now $39) ──
+  { id: "fire-silver",   name: "Blaze",  tagline: "Silver Edition",  edition: "silver", price: 39, img: "/fig1_silver.png",  accent: "#9BB3C8", icon: <Zap size={14} /> },
+  { id: "nature-silver", name: "Flora",  tagline: "Silver Edition",  edition: "silver", price: 39, img: "/fig2_silver.png",  accent: "#9BB3C8", icon: <Leaf size={14} /> },
+  { id: "kawaii-silver", name: "Starla", tagline: "Silver Edition",  edition: "silver", price: 39, img: "/fig3_silver.png",  accent: "#9BB3C8", icon: <Sparkles size={14} /> },
+  { id: "cyber-silver",  name: "Nexus",  tagline: "Silver Edition",  edition: "silver", price: 39, img: "/fig4_silver.png",  accent: "#9BB3C8", icon: <Cpu size={14} /> },
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -249,7 +249,7 @@ export default function ShopSection() {
     { key: "all",      label: "All Editions" },
     { key: "standard", label: "Standard · $9" },
     { key: "gold",     label: "✦ Gold · $49" },
-    { key: "silver",   label: "◈ Silver · $49" },
+    { key: "silver",   label: "◈ Silver · $39" },
   ];
 
   const handleAddLegendary = () => {
@@ -506,7 +506,7 @@ export default function ShopSection() {
           fontSize: "16px", color: "rgba(255,255,255,0.45)",
           maxWidth: "480px", margin: "0 auto 40px", lineHeight: 1.6,
         }}>
-          Hand-crafted 3D figurines in Standard ($9), Gold ($49), and Silver ($49) editions.
+          Hand-crafted 3D figurines in Standard ($9), Gold ($49), and Silver ($39) editions.
           Each piece is numbered and shipped in premium packaging.
         </p>
 
