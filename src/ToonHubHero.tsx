@@ -46,7 +46,11 @@ type Role = "center" | "left" | "right" | "back";
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export default function ToonHubHero() {
+interface ToonHubHeroProps {
+  onBuyNow?: () => void;
+}
+
+export default function ToonHubHero({ onBuyNow }: ToonHubHeroProps = {}) {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -160,8 +164,9 @@ export default function ToonHubHero() {
   return (
     <div
       style={{
-        position: "fixed",
-        inset: 0,
+        position: "relative",
+        width: "100%",
+        height: "100vh",
         backgroundColor: activeBg,
         transition: "background-color 650ms cubic-bezier(0.4,0,0.2,1)",
         fontFamily: "'Inter', sans-serif",
@@ -351,6 +356,41 @@ export default function ToonHubHero() {
             </button>
           ))}
         </div>
+
+        {/* BUY NOW button */}
+        <button
+          onClick={onBuyNow}
+          style={{
+            marginTop: isMobile ? "0.75rem" : "1rem",
+            padding: isMobile ? "10px 24px" : "13px 32px",
+            borderRadius: "999px",
+            background: "white",
+            color: "#0a0a0f",
+            border: "none",
+            fontSize: isMobile ? "12px" : "14px",
+            fontWeight: 800,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            cursor: "pointer",
+            transition: "transform 150ms ease, box-shadow 150ms ease",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+          }}
+          onMouseEnter={(e) => {
+            const b = e.currentTarget as HTMLButtonElement;
+            b.style.transform = "scale(1.05)";
+            b.style.boxShadow = "0 8px 30px rgba(0,0,0,0.35)";
+          }}
+          onMouseLeave={(e) => {
+            const b = e.currentTarget as HTMLButtonElement;
+            b.style.transform = "scale(1)";
+            b.style.boxShadow = "0 4px 20px rgba(0,0,0,0.25)";
+          }}
+        >
+          🛒 BUY NOW
+        </button>
       </div>
 
       {/* ── 6. Bottom-right "DISCOVER IT" link ── */}
