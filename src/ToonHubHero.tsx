@@ -110,14 +110,13 @@ export default function ToonHubHero({ onBuyNow }: ToonHubHeroProps = {}) {
     switch (role) {
       case "center":
         return {
-          // No scale — let height drive the size so legs aren't clipped
           transform: "translateX(-50%)",
           filter: "blur(0px)",
           opacity: 1,
           zIndex: 20,
           left: "50%",
-          height: isMobile ? "78%" : "88%",
-          bottom: isMobile ? "2%" : "2%",
+          height: isMobile ? "68%" : "88%",
+          bottom: isMobile ? "12%" : "2%",
           transition,
           willChange: "transform, filter, opacity",
         };
@@ -125,11 +124,11 @@ export default function ToonHubHero({ onBuyNow }: ToonHubHeroProps = {}) {
         return {
           transform: "translateX(-50%)",
           filter: "blur(2px)",
-          opacity: 0.75,
+          opacity: 0.55,
           zIndex: 10,
-          left: isMobile ? "12%" : "22%",
-          height: isMobile ? "44%" : "52%",
-          bottom: isMobile ? "2%" : "2%",
+          left: isMobile ? "-10%" : "22%",
+          height: isMobile ? "32%" : "52%",
+          bottom: isMobile ? "15%" : "2%",
           transition,
           willChange: "transform, filter, opacity",
         };
@@ -137,11 +136,11 @@ export default function ToonHubHero({ onBuyNow }: ToonHubHeroProps = {}) {
         return {
           transform: "translateX(-50%)",
           filter: "blur(2px)",
-          opacity: 0.75,
+          opacity: 0.55,
           zIndex: 10,
-          left: isMobile ? "88%" : "78%",
-          height: isMobile ? "44%" : "52%",
-          bottom: isMobile ? "2%" : "2%",
+          left: isMobile ? "110%" : "78%",
+          height: isMobile ? "32%" : "52%",
+          bottom: isMobile ? "15%" : "2%",
           transition,
           willChange: "transform, filter, opacity",
         };
@@ -149,11 +148,11 @@ export default function ToonHubHero({ onBuyNow }: ToonHubHeroProps = {}) {
         return {
           transform: "translateX(-50%)",
           filter: "blur(5px)",
-          opacity: 0.55,
+          opacity: 0.4,
           zIndex: 5,
           left: "50%",
-          height: isMobile ? "30%" : "36%",
-          bottom: isMobile ? "2%" : "2%",
+          height: isMobile ? "22%" : "36%",
+          bottom: isMobile ? "15%" : "2%",
           transition,
           willChange: "transform, filter, opacity",
         };
@@ -279,10 +278,16 @@ export default function ToonHubHero({ onBuyNow }: ToonHubHeroProps = {}) {
       <div
         style={{
           position: "absolute",
-          bottom: isMobile ? "1.5rem" : "5rem",
-          left: isMobile ? "1rem" : "6rem",
+          bottom: isMobile ? "2.5rem" : "5rem",
+          left: isMobile ? "50%" : "6rem",
+          transform: isMobile ? "translateX(-50%)" : "none",
           zIndex: 60,
-          maxWidth: "320px",
+          width: isMobile ? "calc(100% - 4rem)" : "none",
+          maxWidth: isMobile ? "none" : "320px",
+          textAlign: isMobile ? "center" : "left",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: isMobile ? "center" : "flex-start",
         }}
       >
         {/* Title */}
@@ -317,52 +322,54 @@ export default function ToonHubHero({ onBuyNow }: ToonHubHeroProps = {}) {
           </p>
         )}
 
-        {/* Nav buttons */}
-        <div style={{ display: "flex", gap: "0.75rem" }}>
-          {(["prev", "next"] as const).map((dir) => (
-            <button
-              key={dir}
-              onClick={() => navigate(dir)}
-              aria-label={dir === "prev" ? "Previous figurine" : "Next figurine"}
-              style={{
-                width: isMobile ? "3rem" : "4rem",
-                height: isMobile ? "3rem" : "4rem",
-                borderRadius: "50%",
-                backgroundColor: "transparent",
-                border: "2px solid rgba(255,255,255,0.9)",
-                color: "white",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                transition: "transform 150ms ease, background-color 150ms ease",
-                flexShrink: 0,
-              }}
-              onMouseEnter={(e) => {
-                const btn = e.currentTarget as HTMLButtonElement;
-                btn.style.transform = "scale(1.08)";
-                btn.style.backgroundColor = "rgba(255,255,255,0.12)";
-              }}
-              onMouseLeave={(e) => {
-                const btn = e.currentTarget as HTMLButtonElement;
-                btn.style.transform = "scale(1)";
-                btn.style.backgroundColor = "transparent";
-              }}
-            >
-              {dir === "prev" ? (
-                <ArrowLeft size={26} strokeWidth={2.25} />
-              ) : (
-                <ArrowRight size={26} strokeWidth={2.25} />
-              )}
-            </button>
-          ))}
-        </div>
+        {/* Nav buttons (Desktop only) */}
+        {!isMobile && (
+          <div style={{ display: "flex", gap: "0.75rem" }}>
+            {(["prev", "next"] as const).map((dir) => (
+              <button
+                key={dir}
+                onClick={() => navigate(dir)}
+                aria-label={dir === "prev" ? "Previous figurine" : "Next figurine"}
+                style={{
+                  width: "4rem",
+                  height: "4rem",
+                  borderRadius: "50%",
+                  backgroundColor: "transparent",
+                  border: "2px solid rgba(255,255,255,0.9)",
+                  color: "white",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  transition: "transform 150ms ease, background-color 150ms ease",
+                  flexShrink: 0,
+                }}
+                onMouseEnter={(e) => {
+                  const btn = e.currentTarget as HTMLButtonElement;
+                  btn.style.transform = "scale(1.08)";
+                  btn.style.backgroundColor = "rgba(255,255,255,0.12)";
+                }}
+                onMouseLeave={(e) => {
+                  const btn = e.currentTarget as HTMLButtonElement;
+                  btn.style.transform = "scale(1)";
+                  btn.style.backgroundColor = "transparent";
+                }}
+              >
+                {dir === "prev" ? (
+                  <ArrowLeft size={26} strokeWidth={2.25} />
+                ) : (
+                  <ArrowRight size={26} strokeWidth={2.25} />
+                )}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* BUY NOW button */}
         <button
           onClick={onBuyNow}
           style={{
-            marginTop: isMobile ? "0.75rem" : "1rem",
+            marginTop: isMobile ? "0.5rem" : "1rem",
             padding: isMobile ? "10px 24px" : "13px 32px",
             borderRadius: "999px",
             background: "white",
@@ -393,6 +400,60 @@ export default function ToonHubHero({ onBuyNow }: ToonHubHeroProps = {}) {
           🛒 BUY NOW
         </button>
       </div>
+
+      {/* Mobile Nav arrows overlay (Edge aligned) */}
+      {isMobile && (
+        <>
+          <button
+            onClick={() => navigate("prev")}
+            aria-label="Previous figurine"
+            style={{
+              position: "absolute",
+              left: "12px",
+              top: "45%",
+              transform: "translateY(-50%)",
+              zIndex: 70,
+              width: "3.2rem",
+              height: "3.2rem",
+              borderRadius: "50%",
+              backgroundColor: "rgba(10, 10, 15, 0.45)",
+              backdropFilter: "blur(4px)",
+              border: "1.5px solid rgba(255,255,255,0.7)",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+            }}
+          >
+            <ArrowLeft size={22} strokeWidth={2.25} />
+          </button>
+          <button
+            onClick={() => navigate("next")}
+            aria-label="Next figurine"
+            style={{
+              position: "absolute",
+              right: "12px",
+              top: "45%",
+              transform: "translateY(-50%)",
+              zIndex: 70,
+              width: "3.2rem",
+              height: "3.2rem",
+              borderRadius: "50%",
+              backgroundColor: "rgba(10, 10, 15, 0.45)",
+              backdropFilter: "blur(4px)",
+              border: "1.5px solid rgba(255,255,255,0.7)",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+            }}
+          >
+            <ArrowRight size={22} strokeWidth={2.25} />
+          </button>
+        </>
+      )}
 
       {/* ── 6. Bottom-right "DISCOVER IT" link ── */}
       <div

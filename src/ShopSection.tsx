@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ShoppingCart, Star, Zap, Leaf, Sparkles, Cpu, Check, ShieldAlert } from "lucide-react";
 import { getAssetUrl } from "./utils";
 
@@ -256,6 +256,14 @@ export default function ShopSection({
 }) {
   const [filter, setFilter] = useState<Edition | "all">("all");
   const [legendaryAdded, setLegendaryAdded] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const filtered = filter === "all" ? DOLLS : DOLLS.filter(d => d.edition === filter);
 
@@ -328,10 +336,10 @@ export default function ShopSection({
           borderRadius: "32px",
           border: "2px solid rgba(0, 240, 255, 0.25)",
           boxShadow: "0 30px 90px rgba(0,240,255,0.08), inset 0 0 40px rgba(0,240,255,0.05)",
-          padding: "48px",
+          padding: isMobile ? "28px 20px" : "48px",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-          gap: "48px",
+          gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(320px, 1fr))",
+          gap: isMobile ? "24px" : "48px",
           alignItems: "center",
           position: "relative",
           overflow: "hidden",
@@ -394,7 +402,7 @@ export default function ShopSection({
               src={getAssetUrl("/fig_legendary.png")}
               alt="AURA Cyan Diamond Figurine"
               style={{
-                height: "330px",
+                height: isMobile ? "220px" : "330px",
                 width: "auto",
                 objectFit: "contain",
                 display: "block",
@@ -405,61 +413,64 @@ export default function ShopSection({
             />
           </div>
 
-          {/* Right: Info & CTA */}
-          <div style={{ position: "relative", zIndex: 1 }}>
-            <span style={{
-              background: "rgba(0, 240, 255, 0.1)",
-              color: "#00f0ff",
-              fontSize: "11px", fontWeight: 800, letterSpacing: "0.15em",
-              padding: "6px 14px", borderRadius: "30px",
-              border: "1.5px solid rgba(0, 240, 255, 0.25)",
-              display: "inline-flex", alignItems: "center", gap: "6px",
-              marginBottom: "20px",
-            }}>
-              <Star size={12} fill="#00f0ff" /> 1 OF 100 PIECES
-            </span>
-
-            <h1 style={{
-              fontFamily: "'Anton', sans-serif",
-              fontSize: "clamp(38px, 6vw, 68px)",
-              color: "white",
-              lineHeight: 1,
-              letterSpacing: "-0.01em",
-              textTransform: "uppercase",
-              marginBottom: "12px",
-            }}>
-              AURA DIAMOND
-            </h1>
-
-            <p style={{
-              fontSize: "12px", color: "rgba(0, 240, 255, 0.7)", letterSpacing: "0.15em",
-              textTransform: "uppercase", fontWeight: 700, marginBottom: "20px"
-            }}>
-              ULTRA RARE CYAN DIAMOND EDITION
-            </p>
-
-            <p style={{
-              fontSize: "15px", color: "rgba(255,255,255,0.65)",
-              lineHeight: 1.7, marginBottom: "24px",
-            }}>
-              Crafted from high-gloss translucent cyan diamond polymer that refracts studio light. 
-              Features embedded metallic glitter diamonds and a self-luminous micro-core. 
-              Delivered inside a premium security capsule with a solid brass edition plaque.
-            </p>
-
-            {/* Stars & Rating */}
-            <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "32px" }}>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} size={15} fill="#00f0ff" color="#00f0ff" />
-              ))}
-              <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)", marginLeft: "8px" }}>
-                Legendary Rating (5.0)
+            {/* Info & Description */}
+            <div style={{ textAlign: isMobile ? "center" : "left" }}>
+              <span style={{
+                background: "rgba(0, 240, 255, 0.1)",
+                color: "#00f0ff",
+                fontSize: "11px", fontWeight: 800, letterSpacing: "0.15em",
+                padding: "6px 14px", borderRadius: "30px",
+                border: "1.5px solid rgba(0, 240, 255, 0.25)",
+                display: "inline-flex", alignItems: "center", gap: "6px",
+                marginBottom: "20px",
+              }}>
+                <Star size={12} fill="#00f0ff" /> 1 OF 100 PIECES
               </span>
-            </div>
 
+              <h1 style={{
+                fontFamily: "'Anton', sans-serif",
+                fontSize: isMobile ? "42px" : "clamp(38px, 6vw, 68px)",
+                color: "white",
+                lineHeight: 1.1,
+                letterSpacing: "-0.01em",
+                textTransform: "uppercase",
+                marginBottom: "12px",
+              }}>
+                AURA DIAMOND
+              </h1>
+
+              <p style={{
+                fontSize: "12px", color: "rgba(0, 240, 255, 0.7)", letterSpacing: "0.15em",
+                textTransform: "uppercase", fontWeight: 700, marginBottom: "20px"
+              }}>
+                ULTRA RARE CYAN DIAMOND EDITION
+              </p>
+
+              <p style={{
+                fontSize: "14px", color: "rgba(255,255,255,0.65)",
+                lineHeight: 1.6, marginBottom: "24px",
+              }}>
+                Crafted from high-gloss translucent cyan diamond polymer that refracts studio light. 
+                Features embedded metallic glitter diamonds and a self-luminous micro-core.
+              </p>
+
+              {/* Stars & Rating */}
+              <div style={{ display: "flex", justifyContent: isMobile ? "center" : "flex-start", alignItems: "center", gap: "6px", marginBottom: "32px" }}>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={15} fill="#00f0ff" color="#00f0ff" />
+                ))}
+                <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)", marginLeft: "8px" }}>
+                  Legendary Rating (5.0)
+                </span>
+              </div>
             {/* Price & Cart CTA */}
-            <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-              <div>
+            <div style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              alignItems: isMobile ? "stretch" : "center",
+              gap: isMobile ? "18px" : "24px",
+            }}>
+              <div style={{ textAlign: isMobile ? "center" : "left" }}>
                 <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.4)", display: "block", marginBottom: "4px" }}>
                   PRICE
                 </span>
@@ -473,7 +484,8 @@ export default function ShopSection({
               <button
                 onClick={handleAddLegendary}
                 style={{
-                  flex: 1,
+                  flex: isMobile ? "none" : 1,
+                  width: "100%",
                   height: "56px",
                   borderRadius: "16px",
                   border: "none",
