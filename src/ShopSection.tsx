@@ -72,12 +72,19 @@ const EDITION_BADGE_COLOR: Record<Edition, string> = {
 
 // ─── Product Card ─────────────────────────────────────────────────────────────
 
-function ProductCard({ product }: { product: Product }) {
+function ProductCard({
+  product,
+  onAddToCart,
+}: {
+  product: Product;
+  onAddToCart: (p: Product) => void;
+}) {
   const [added, setAdded] = useState(false);
   const [hovered, setHovered] = useState(false);
 
   const handleAdd = () => {
     setAdded(true);
+    onAddToCart(product);
     setTimeout(() => setAdded(false), 1800);
   };
 
@@ -241,7 +248,11 @@ function ProductCard({ product }: { product: Product }) {
 
 // ─── Shop Section ─────────────────────────────────────────────────────────────
 
-export default function ShopSection() {
+export default function ShopSection({
+  onAddToCart,
+}: {
+  onAddToCart: (product: any) => void;
+}) {
   const [filter, setFilter] = useState<Edition | "all">("all");
   const [legendaryAdded, setLegendaryAdded] = useState(false);
 
@@ -256,6 +267,15 @@ export default function ShopSection() {
 
   const handleAddLegendary = () => {
     setLegendaryAdded(true);
+    onAddToCart({
+      id: "aura-legendary",
+      name: "AURA DIAMOND",
+      tagline: "Legendary Edition",
+      edition: "legendary",
+      price: 149,
+      img: "/fig_legendary.png",
+      accent: "#00f0ff",
+    });
     setTimeout(() => setLegendaryAdded(false), 1800);
   };
 
@@ -549,7 +569,7 @@ export default function ShopSection() {
         gap: "20px",
       }}>
         {filtered.map(product => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} />
         ))}
       </div>
 
