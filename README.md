@@ -13,6 +13,8 @@
 
 ### ✦ 3D Character Figurine Carousel — Marketing Hero Section ✦
 
+🔗 **Live Demo:** [https://soumik7484-art.github.io/3d-marketing/](https://soumik7484-art.github.io/3d-marketing/)
+
 <br/>
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
