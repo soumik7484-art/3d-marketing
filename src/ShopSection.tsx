@@ -20,7 +20,7 @@ interface Product {
 // ─── Product Data ─────────────────────────────────────────────────────────────
 
 const DOLLS: Product[] = [
-  // ── Standard (12 Unique Designs - Now $9) ──
+  // ── Standard (16 Unique Designs - Now $9) ──
   { id: "fire-std",      name: "Blaze",    tagline: "Fire Edition",      edition: "standard", price: 9, img: "/fig1.png",         accent: "#E8622A", icon: <Zap size={14} /> },
   { id: "nature-std",    name: "Flora",    tagline: "Nature Edition",    edition: "standard", price: 9, img: "/fig2.png",         accent: "#3D9E55", icon: <Leaf size={14} /> },
   { id: "kawaii-std",    name: "Starla",   tagline: "Kawaii Edition",    edition: "standard", price: 9, img: "/fig3.png",         accent: "#D44F99", icon: <Sparkles size={14} /> },
@@ -33,6 +33,10 @@ const DOLLS: Product[] = [
   { id: "magic-std",     name: "Mystic",   tagline: "Magic Edition",     edition: "standard", price: 9, img: "/fig10.png",        accent: "#4A8EE8", icon: <Sparkles size={14} /> },
   { id: "nebula-std",    name: "Gwen",     tagline: "Nebula Edition",    edition: "standard", price: 9, img: "/fig11.png",        accent: "#BC2ACC", icon: <Sparkles size={14} /> },
   { id: "acid-std",      name: "Jolt",     tagline: "Acid Edition",      edition: "standard", price: 9, img: "/fig12.png",        accent: "#3DCC2A", icon: <Zap size={14} /> },
+  { id: "cyberia-std",   name: "Cyberia",  tagline: "Neon Edition",      edition: "standard", price: 9, img: "/fig13.png",        accent: "#CC2AB5", icon: <Cpu size={14} /> },
+  { id: "lolita-std",    name: "Lola",     tagline: "Lolita Edition",    edition: "standard", price: 9, img: "/fig14.png",        accent: "#8B2ACC", icon: <Sparkles size={14} /> },
+  { id: "forest-std",    name: "Sylvan",   tagline: "Woodland Edition",  edition: "standard", price: 9, img: "/fig15.png",        accent: "#2ACC55", icon: <Leaf size={14} /> },
+  { id: "emerald-std",   name: "Emerald",  tagline: "Emerald Edition",   edition: "standard", price: 9, img: "/fig16.png",        accent: "#2ACCA5", icon: <Zap size={14} /> },
   // ── Gold (Now $49) ──
   { id: "fire-gold",   name: "Blaze",   tagline: "Gold Edition",    edition: "gold",     price: 49, img: "/fig1_gold.png",   accent: "#F5A623", icon: <Zap size={14} /> },
   { id: "nature-gold", name: "Flora",   tagline: "Gold Edition",    edition: "gold",     price: 49, img: "/fig2_gold.png",   accent: "#F5A623", icon: <Leaf size={14} /> },
